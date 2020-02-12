@@ -1,10 +1,20 @@
 cmake_minimum_required(VERSION 2.8.7)
 project(mininet C CXX)
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  set(CLANG_COMPILER TRUE)
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+  set(GCC_COMPILER TRUE)
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+  set(MSVC_COMPILER TRUE)
+endif()
+
 # Build options.
 option(BUILD_TESTS "Build tests" ON)
 option(BUILD_DOCUMENTATION "Build documentation" OFF)
-set(CMAKE_CXX_FLAGS "-Wno-deprecated-declarations")
+if(GCC_COMPILER)
+    set(CMAKE_CXX_FLAGS "-Wno-deprecated-declarations")
+endif()
 
 # Extra variables.
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
