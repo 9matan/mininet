@@ -26,7 +26,7 @@ if (NOT __GFLAGS_INCLUDED) # guard against multiple includes
     ExternalProject_Add(gflags
       PREFIX ${gflags_PREFIX}
       GIT_REPOSITORY "https://github.com/gflags/gflags.git"
-      GIT_TAG "v2.1.2"
+      GIT_TAG "v2.2.2"
       UPDATE_COMMAND ""
       INSTALL_DIR ${gflags_INSTALL}
       CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
