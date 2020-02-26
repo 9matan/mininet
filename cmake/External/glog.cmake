@@ -34,10 +34,17 @@ if (NOT __GLOG_INCLUDED)
       DEPENDS ${GLOG_DEPENDS}
       PREFIX ${glog_PREFIX}
       GIT_REPOSITORY "https://github.com/google/glog"
-      GIT_TAG "v0.3.4"
+      GIT_TAG "v0.4.0"
       UPDATE_COMMAND ""
       INSTALL_DIR ${gflags_INSTALL}
-      CONFIGURE_COMMAND env "CFLAGS=${GLOG_C_FLAGS}" "CXXFLAGS=${GLOG_CXX_FLAGS}" ${glog_PREFIX}/src/glog/configure --prefix=${glog_INSTALL} --enable-shared=no --enable-static=yes --with-gflags=${GFLAGS_LIBRARY_DIRS}/..
+      #CONFIGURE_COMMAND "CFLAGS=${GLOG_C_FLAGS}" "CXXFLAGS=${GLOG_CXX_FLAGS}" ${glog_PREFIX}/src/glog/configure --prefix=${glog_INSTALL} --enable-shared=no --enable-static=yes --with-gflags=${GFLAGS_LIBRARY_DIRS}/..
+      CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+                 -DCMAKE_INSTALL_PREFIX=${glog_INSTALL}
+                 -DBUILD_SHARED_LIBS=OFF
+                 #-DENABLE_STATIC=ON
+                 -DWITH_GFLAGS=ON
+                 -DCMAKE_C_FLAGS=${GLOG_C_FLAGS}
+                 -DCMAKE_CXX_FLAGS=${GLOG_CXX_FLAGS}
       LOG_DOWNLOAD 1
       LOG_CONFIGURE 1
       LOG_INSTALL 1
