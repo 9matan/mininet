@@ -41,9 +41,11 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+#define _USE_MATH_DEFINES
 #include <dataset/dataset.h>
 
 #include <glog/logging.h>
+#include <numeric>
 #include <unordered_set>
 
 namespace mininet {
