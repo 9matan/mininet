@@ -5,6 +5,7 @@ foreach(executable ${executables})
   file(GLOB_RECURSE local_src ${CMAKE_SOURCE_DIR}/exec/${executable}/*.cpp)
   add_executable(${executable} ${local_src})
   target_link_libraries(${executable} mininet ${mininet_LIBRARIES})
+  target_link_libraries(${executable} mininet shlwapi.lib)
   mininet_set_runtime_directory(${executable} ${EXECUTABLE_OUTPUT_PATH})
 endforeach()
 
